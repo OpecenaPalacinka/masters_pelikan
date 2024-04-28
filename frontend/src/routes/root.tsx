@@ -12,8 +12,8 @@ export default function RootPage() {
             by causality of events.
           </p>
           <p className={' py-1 text-lg'}>
-            Application store data about events happened during your doctoral study. Each event has
-            several required properties such as event type, date, description and label.
+            Application stores data about events which happened during your doctoral study. Each
+            event has several required properties such as event type, date, description and label.
             Additionally you can create causality between events or save your feeling of the event.
             Application is capable of creating new event types which can be used by whole community
             of users.
