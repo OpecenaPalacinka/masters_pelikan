@@ -1,0 +1,15 @@
+extend type Mutation {
+  _empty(nothing: String): String
+
+  createSentiment(sentiment: String!): Sentiment!
+}
+
+extend type Query {
+  _empty: String
+
+}
+
+type Sentiment {
+  sentiment_id: Int!
+  name: String!
+}

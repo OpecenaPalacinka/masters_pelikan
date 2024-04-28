@@ -1,0 +1,17 @@
+extend type Mutation {
+  _empty(nothing: String): String
+
+}
+
+extend type Query {
+  _empty: String
+
+  getAllEventsByEventType(eventType: Int!): [Event]!
+  getAllEventTypesByEventId(eventId: [Int!], skip: Int!): [EventToType]!
+}
+
+type EventToType {
+  events_to_types_id: Int!
+  event_id: Event!
+  event_type_id: EventType!
+}

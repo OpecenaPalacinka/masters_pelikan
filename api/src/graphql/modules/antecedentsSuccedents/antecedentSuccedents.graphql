@@ -1,0 +1,19 @@
+extend type Mutation {
+  _empty(nothing: String): String
+
+}
+
+extend type Query {
+  _empty: String
+
+ getTopThreeAntecedents(eventTypeId: Int!): [EventType]!
+ getTopThreeSuccedent(eventTypeId: Int!): [EventType]!
+}
+
+type AntecedentSuccedent {
+  id: Int!
+  event_id: Event!
+  event_type_id: EventType!
+  related_type_id: EventType!
+  relationship: Int!
+}

@@ -1,0 +1,18 @@
+extend type Mutation {
+  _empty(nothing: String): String
+
+}
+
+extend type Query {
+  _empty: String
+
+  getAllCausalitiesByEventIds(eventIds: [Int!]!): [Causality]!
+}
+
+type Causality {
+  causality_id: Int!
+  event_id: Event!
+  causality_type_id: CausalityType!
+  antecedent: Int
+  succedent: Int
+}

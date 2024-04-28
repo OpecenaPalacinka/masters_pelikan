@@ -1,0 +1,51 @@
+extend type Mutation {
+  _empty(nothing: String): String
+
+  createEvent(event: EventInput!): Event!
+  updateEvent(id: Int!, event: EventInput!): Event!
+}
+
+extend type Query {
+  _empty: String
+
+  getAllEventsByUserId(userId: Int!): [Event]!
+  getAllEventsWithTypeByUserId(userId: Int!): [EventToType]!
+  getAllEventsByUserIds(userIds: [Int!]!): [Event]!
+  getNumberOfEventsByUserId(userId: Int!): IdsToNumbers!
+  getNumberOfEventsByUserIds(userIds: [Int!]!): [IdsToNumbers!]!
+  getNumberOfEventTypesByUserId(userId: Int!): IdsToNumbers!
+
+}
+
+type Event {
+  event_id: Int!
+  user_id: User!
+  happened: String!
+  ended: String
+  description: String!
+  label: String!
+  sentiment_id: Sentiment
+}
+
+type EventWithType {
+  event: Event!
+  eventType: EventType!
+}
+
+input EventInput {
+  user_id: Int!
+  happened: String!
+  ended: String
+  description: String!
+  label: String!
+  sentiment_id: Int
+  event_type_id: Int!
+  succedent: Int
+  antecedent: Int
+  causality_id: Int
+}
+
+type IdsToNumbers {
+  user_id: Int!
+  number_of_events: Int!
+}

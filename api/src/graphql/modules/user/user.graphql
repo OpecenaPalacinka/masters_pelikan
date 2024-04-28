@@ -1,0 +1,41 @@
+extend type Mutation {
+  _empty(nothing: String): String
+
+  signUp(signUp: SignUp!): SignedUser!
+  resetPassword(userId:Int!, newPassword1:String!, newPassword2:String!): String!
+  signIn(email: String!, password: String!): SignedUser!
+  deleteUser(userId:Int!): String!
+}
+
+extend type Query {
+  _empty: String
+
+  getAllUsers: [User!]!
+}
+
+type User {
+  user_id: Int!
+  email:String!
+  firstname:String!
+  lastname:String!
+  registred:String!
+  role_id:Role!
+}
+
+type SignedUser {
+  user: User!
+  token: String!
+  role: String!
+}
+
+input SignUp {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+}
+
+type Role {
+  role_id: Int!
+  name: String!
+}

@@ -1,0 +1,35 @@
+extend type Mutation {
+  _empty(nothing: String): String
+
+  createEventType(eventType: EventTypeInput!): EventType!
+  acceptEventType(eventTypeId: Int!): EventType!
+  resendEventType(eventTypeId: Int!): EventType!
+  declineEventType(eventTypeId: Int!): EventType!
+  deleteEventType(eventTypeId: Int!): EventType!
+  updateEventType(eventTypeId: Int!, eventType: EventTypeInput!): EventType!
+}
+
+extend type Query {
+  _empty: String
+
+  getAllEventTypes: [EventType!]!
+  getNotFilledEventTypesByUsedId(userId: Int!): [EventType]!
+  getCustomEventTypesByUserId(userId: Int!): [EventType]!
+  getEventTypesForReview: [EventType]!
+  getAllEventTypesForLegend: [EventType!]!
+}
+
+type EventType {
+  event_type_id: Int!
+  name: String!
+  duration: Int!
+  user_id: User
+  custom: Boolean
+  accepted: Boolean
+}
+
+input EventTypeInput {
+  name: String!
+  duration: Int!
+  user_id: Int!
+}

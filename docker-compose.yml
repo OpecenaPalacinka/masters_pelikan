@@ -1,0 +1,20 @@
+# For local development purposes only, PostgreSQL is set to open on port 5455.
+version: '3.8'
+services:
+  db:
+    image: postgres:16
+    restart: always
+    ports:
+      # Ensure that the PostgreSQL instance is configured to operate on port 5455
+      # to avoid conflicts with other instances running elsewhere.
+      - '5456:5432'
+    container_name: 'masters-pelikan'
+    environment:
+      POSTGRES_DB: 'database'
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
